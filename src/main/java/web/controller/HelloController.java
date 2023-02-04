@@ -7,6 +7,7 @@ import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import web.service.CarsService;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -31,5 +32,5 @@ public class HelloController {
 		model.addAttribute("listOfCars", cars.getCars(value));
 		return "cars";
 	}
-	
+
 }
