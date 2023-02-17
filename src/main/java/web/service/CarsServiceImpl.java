@@ -2,14 +2,15 @@ package web.service;
 
 import org.springframework.stereotype.Service;
 import web.model.Car;
+
 import java.util.ArrayList;
 import java.util.List;
 
 @Service
-public class CarsServiceImpl implements CarsService{
+public class CarsServiceImpl implements CarsService {
     private final List<Car> cars;
 
-    public CarsServiceImpl () {
+    public CarsServiceImpl() {
         cars = new ArrayList<>();
         cars.add(new Car("Toyota", "Corolla", 2010));
         cars.add(new Car("Toyota", "Camry", 2015));
@@ -20,6 +21,11 @@ public class CarsServiceImpl implements CarsService{
 
     @Override
     public List<Car> getCars(Integer numberOfCars) {
+        if (numberOfCars < 0) {
+            return null;
+        } else if (numberOfCars > cars.size()) {
+            return cars;
+        }
         return cars.subList(0, numberOfCars);
     }
 }
